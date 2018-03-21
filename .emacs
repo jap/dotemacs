@@ -296,11 +296,9 @@
 ;; make s-backspace remove the current line
 (defun nuke-line ()
   (interactive)
-;  (if (looking-at "\\s-")
-;      (delete-region (point) (progn (skip-chars-forward " \t\r\n") (point)))
-  (setq previous-column (current-column)
-        (kill-whole-line 1)
-        (move-to-column previous-column)))
+  (setq previous-column (current-column))
+  (kill-whole-line)
+  (move-to-column previous-column))
 
 (use-package emojify
   :ensure t
