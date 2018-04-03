@@ -38,13 +38,12 @@
 
 (use-package highlight-symbol
   :ensure t
-  :bind (
-         ("<f7>" . highlight-symbol-prev)
+  :bind (("<f7>" . highlight-symbol-prev)
          ("<f8>" . highlight-symbol)
          ("<f9>" . highlight-symbol-next)
-         ;("M-<f8>" . highlight-symbol-query-replace)
+;;         ("M-<f8>" . highlight-symbol-query-replace)
   )
-  :config
+  :init
   (apply-to-my-hooks 'highlight-symbol-mode)
   :diminish highlight-symbol-mode
 )
@@ -76,7 +75,8 @@
   (setq projectile-mode-line '(:eval (format " P[%s]" (projectile-project-name)))
         projectile-completion-system 'ivy)
 )
-(use-package projectile-speedbar)
+(use-package projectile-speedbar
+  :ensure t)
 
 (use-package ido
   :init
@@ -276,7 +276,8 @@
 (use-package web-mode
   :ensure t)
 
-(use-package mmm-mode)
+(use-package mmm-mode
+  :ensure t)
 ;;(use-package mmm-jinja2
 ;;  :config ((add-to-list 'auto-mode-alist '("\\.j2\\'" . yaml-mode))
 ;;           (mmm-add-mode-ext-class 'yaml-mode "\\.j2\\'" 'jinja2)))
@@ -346,7 +347,7 @@
  '(flycheck-python-flake8-executable "/usr/local/bin/flake8")
  '(package-selected-packages
    (quote
-    (flycheck elm-mode go-mode fill-column-indicator highlight-parentheses diff-hl super-save yasnippet-snippets yaml-mode web-mode use-package sphinx-mode solarized-theme rainbow-identifiers python-mode projectile-speedbar plantuml-mode org-mind-map mmm-jinja2 markdown-mode magit json-mode js2-mode jedi htmlize highlight-symbol flx-ido exec-path-from-shell emojify elpy edit-server dockerfile-mode diminish color-theme-modern auto-package-update ansible)))
+    (mmm-mode flycheck elm-mode go-mode fill-column-indicator highlight-parentheses diff-hl super-save yasnippet-snippets yaml-mode web-mode use-package sphinx-mode solarized-theme rainbow-identifiers python-mode projectile-speedbar plantuml-mode org-mind-map mmm-jinja2 markdown-mode magit json-mode js2-mode jedi htmlize highlight-symbol flx-ido exec-path-from-shell emojify elpy edit-server dockerfile-mode diminish color-theme-modern auto-package-update ansible)))
  '(plantuml-jar-path "/usr/local/Cellar/plantuml/1.2017.16/libexec/plantuml.jar"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
