@@ -143,6 +143,10 @@
   :config
   (yas-global-mode 1))
 
+(use-package yasnippet-snippets
+  :ensure t
+)
+
 (use-package emojify
   :ensure t
   :config (global-emojify-mode)
@@ -266,12 +270,9 @@
 
 (use-package diminish
   :ensure t)
+
 (use-package ansible
   :ensure t)
-(use-package yasnippet
-  :ensure t
-  :config
-  (yas-global-mode t))
 
 (use-package web-mode
   :ensure t)
@@ -284,11 +285,14 @@
 
 (use-package python-mode
   :ensure t)
+
 (use-package sphinx-mode
   :ensure t)
+
 (use-package yaml-mode
   :ensure t
   :mode ("\\.yml$" . yaml-mode))
+
 (use-package rainbow-identifiers
   :ensure t)
 
@@ -300,10 +304,7 @@
   (setq previous-column (current-column))
   (kill-whole-line)
   (move-to-column previous-column))
-
-(use-package emojify
-  :ensure t
-)
+(global-set-key [S-backspace] 'nuke-line)
 
 (use-package htmlize
   :ensure t
@@ -335,20 +336,33 @@
   :ensure t
 )
 
+(use-package toml-mode
+  :ensure t)
 
-(global-set-key [S-backspace] 'nuke-line)
+(use-package rust-mode
+  :init
+  (use-package cargo
+    :ensure t
+    :config
+    (add-hook 'rust-mode-hook 'cargo-minor-mode))
+
+  :ensure t)
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(flycheck-flake8-maximum-line-length 120)
- '(flycheck-python-flake8-executable "/usr/local/bin/flake8")
+ '(custom-safe-themes
+   (quote
+    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+ '(gnutls-trustfiles
+   (quote
+    ("/etc/ssl/certs/ca-certificates.crt" "/etc/pki/tls/certs/ca-bundle.crt" "/etc/ssl/ca-bundle.pem" "/usr/ssl/certs/ca-bundle.crt" "/usr/local/share/certs/ca-root-nss.crt" "/private/etc/ssl/cert.pem")))
  '(package-selected-packages
    (quote
-    (mmm-mode flycheck elm-mode go-mode fill-column-indicator highlight-parentheses diff-hl super-save yasnippet-snippets yaml-mode web-mode use-package sphinx-mode solarized-theme rainbow-identifiers python-mode projectile-speedbar plantuml-mode org-mind-map mmm-jinja2 markdown-mode magit json-mode js2-mode jedi htmlize highlight-symbol flx-ido exec-path-from-shell emojify elpy edit-server dockerfile-mode diminish color-theme-modern auto-package-update ansible)))
- '(plantuml-jar-path "/usr/local/Cellar/plantuml/1.2017.16/libexec/plantuml.jar"))
+    (cargo toml-mode rust-mode rust slack yasnippet-snippets yaml-mode web-mode use-package super-save sphinx-mode solarized-theme rainbow-identifiers python-mode projectile-speedbar plantuml-mode org-mind-map mmm-jinja2 markdown-mode magit json-mode js2-mode jedi htmlize highlight-symbol highlight-parentheses go-mode flycheck flx-ido fill-column-indicator exec-path-from-shell emojify elpy elm-mode edit-server dockerfile-mode diminish diff-hl color-theme-modern auto-package-update ansible))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
